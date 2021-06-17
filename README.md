@@ -1,0 +1,1 @@
+Update a spotify playlist with the 15 top songs from Sweden, Norway and global. Both viral hits and toplist hits.

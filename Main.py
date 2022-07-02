@@ -10,7 +10,12 @@ def start():
     songsUri = Other.getSongsUriFromPlaylists(spotifyChartsPlaylistsIds)
     uniqueSongsUri = Other.onlyUniqueValues(songsUri)
     jsonUniqueSongsUri = ConverterHelper.createJsonData(uniqueSongsUri)
-    SpotifyApi.replacePlaylist(jsonUniqueSongsUri)
+    response = SpotifyApi.replacePlaylist(jsonUniqueSongsUri)
+
+    if response.ok:
+        LoggerWrapper.logError(f'Success! Created new list with response {response.status_code}')
+    else:
+        LoggerWrapper.logError(f'Failed! Could not create new list with. Error response {response.status_code}')
 
 try:
     start()
